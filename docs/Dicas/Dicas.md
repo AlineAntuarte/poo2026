@@ -66,3 +66,22 @@ jogos.size();
 ```java
 jogos.get(0);
 ```
+
+## Como fazer e chamar uma Função?
+
+> Em Java, as funções são chamadas de métodos e precisam ser criadas dentro de uma classe. Para criar um método básico, você define o modificador de acesso, o tipo de retorno, o nome da função e os parâmetros entre parênteses.
+
+```java
+public class Exemplo {
+    // Função que soma dois números inteiros e retorna o resultado
+    public static int somar(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        // Chamando a função
+        int resultado = somar(5, 3);
+        System.out.println(resultado); // Imprime 8
+    }
+}
+```
