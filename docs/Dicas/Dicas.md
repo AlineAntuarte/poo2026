@@ -40,3 +40,29 @@ double altura = leia.nextDouble();
 // Boa prática: fechar o Scanner ao terminar
 leia.close();
 ```
+
+## Como usar o ArrayList?
+
+### 1. Criar a lista
+
+```java
+ArrayList<String> jogos = new ArrayList<>();
+```
+
+### 2. Adicionar itens
+
+```java
+jogos.add("Zelda");
+```
+
+### 3. Ver o tamanho
+
+```java
+jogos.size();
+```
+
+### 4. Pegar um item
+
+```java
+jogos.get(0);
+```
