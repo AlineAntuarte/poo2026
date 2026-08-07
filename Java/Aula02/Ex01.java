@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * Ex01
  */
 public class Ex01 {
-    Scanner leia = new Scanner(System.in);
-    ArrayList<String> Jogos = new ArrayList<>();
+    static Scanner leia = new Scanner(System.in);
+    static ArrayList<String> Jogos = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -20,19 +20,24 @@ public class Ex01 {
 
         switch (userInt) {
             case 1:
-
+                Cadastro();
                 break;
 
             case 2:
+                Listar();
                 break;
 
             case 3:
+                Atualizar();
                 break;
 
             case 4:
+                Remover();
                 break;
 
             case 5:
+                Sair();
+                leia.close();
                 break;
 
             default:
@@ -41,15 +46,31 @@ public class Ex01 {
 
     }
 
-    public void Cadastro(String nome) {
-        System.out.print("Quantos jogos deseja cadastrar? Insira valor > 0: ");
+    public static void Cadastro() {
+        System.out.print("Quantos jogos deseja cadastrar: ");
         int qtdJogosCad = leia.nextInt();
         String userString = leia.nextLine();
         for (int i = 0; i < qtdJogosCad; i++) {
-            System.out.print("Insira o nome do jogo que deseja cadastrar: ");
+            System.out.print("Insira o nome do jogo que deseja cadastrar: " + (i + 1) + "º - ");
             userString = leia.nextLine();
             Jogos.add(userString);
         }
     }
-    leia.close();
+
+    public static void Listar() {
+
+    }
+
+    public static void Atualizar() {
+
+    }
+
+    public static void Remover() {
+
+    }
+
+    public static void Sair() {
+
+    }
+
 }
