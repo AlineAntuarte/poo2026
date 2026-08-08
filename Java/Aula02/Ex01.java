@@ -95,7 +95,22 @@ public class Ex01 {
     }
 
     public static void Remover() {
+        System.out.println("> Revisando Lista de Jogos... <");
 
+        for (int i = 0; i < Jogos.size(); i++) {
+            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
+        }
+
+        System.out.print("> Qual Jogo da Lista Deseja Remover: ");
+        int userIntRemover = leia.nextInt();
+        userIntRemover--;
+
+        Jogos.remove(userIntRemover);
+
+        System.out.println("\n> Nova Lista de Jogos... <");
+        for (int i = 0; i < Jogos.size(); i++) {
+            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
+        }
     }
 
     public static void Sair() {
