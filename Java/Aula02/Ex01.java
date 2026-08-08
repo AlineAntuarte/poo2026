@@ -16,11 +16,11 @@ public class Ex01 {
         System.out.println("=== Bem vindo ===");
 
         while (Trava) {
-            System.out.println("\n\n\nSelecione uma alternativa de 1 a 5.");
+            System.out.println("\n\nSelecione uma alternativa de 1 a 5.");
             System.out.print(
                     "1 - Cadastrar Jogo\n2 - Listar Jogos\n3 - Atualizar Jogo\n4 - Remover Jogo\n5 - Sair\n\nOpção: ");
             int userIntSwitch = leia.nextInt();
-            System.out.println("\n\n\n");
+            System.out.println("\n");
 
             switch (userIntSwitch) {
                 case 1:
