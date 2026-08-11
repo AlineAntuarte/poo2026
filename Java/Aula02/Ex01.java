@@ -179,6 +179,32 @@ public class Ex01 {
 
     public static void RemoverPorNome() {
 
+        System.out.println("> Revisando Lista de Jogos... <");
+
+        Listar();
+
+        System.out.print("> Qual jogo da lista Deseja Remover? Insira por escrito: ");
+        String userStringRemover = leia.nextLine();
+
+        boolean jogoEncontrado = false;
+
+        for (int i = 0; i < Jogos.size(); i++) {
+
+            if (Jogos.get(i).equalsIgnoreCase(userStringRemover)) {// Se o item do array for igual a palavra
+                System.out.println("'" + userStringRemover + "' está na lista!");
+                System.out.println("'" + Jogos.get(i) + "' será Removido");
+
+                Jogos.remove(i);
+                jogoEncontrado = true;
+
+                break;
+                // Encerra ao achar a palavra identica e remover.
+            }
+        }
+
+        if (!jogoEncontrado) { // Se depois de procurar em tudo não achar, sinaliza
+            System.out.println("Este jogo não existe, verifique a digitação.");
+        }
     }
 
     public static void Sair() {
