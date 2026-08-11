@@ -56,10 +56,23 @@ public class Ex01 {
         System.out.print("Quantos jogos deseja cadastrar: ");
         int qtdJogosCad = leia.nextInt();
         String userString = leia.nextLine();
+
         for (int i = 0; i < qtdJogosCad; i++) {
             System.out.print("Insira o nome do jogo que deseja cadastrar: " + (i + 1) + "º - ");
             userString = leia.nextLine();
-            Jogos.add(userString);
+
+            while (Trava) {
+                if (i == 0) {
+                    Jogos.add(userString);
+                    // Solução para a verificação não ser barrada por um array vazio
+                } else if (Jogos.get(i).equalsIgnoreCase(userString)) {
+                    System.out.println("O jogo '" + userString + "' já está inserido, tente novamente.");
+                } else {
+                    Jogos.add(userString);
+                    System.out.println("'" + userString + "' Inserido na lista!");
+                    Trava = false;
+                }
+            }
         }
     }
 
