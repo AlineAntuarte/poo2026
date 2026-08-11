@@ -129,21 +129,20 @@ public class Ex01 {
         System.out.print("> Qual jogo da lista Deseja atualizar? Insira por escrito: ");
         String userStringAtualizar = leia.nextLine();
 
-        for (String jogoDaListaTemporario : Jogos) { // Um for mais limpo
-            if (jogoDaListaTemporario.equalsIgnoreCase(userStringAtualizar)) {
+        for (int i = 0; i < Jogos.size(); i++) {
+
+            if (Jogos.get(i).equalsIgnoreCase(userStringAtualizar)) {// Se o item do array for igual a palavra
                 System.out.println("'" + userStringAtualizar + "' está na lista!");
                 System.out.println("Por qual jogo deseja substituir? Insira por escrito: ");
                 String userStringSubsJogo = leia.nextLine();
-                System.out.println("'" + jogoDaListaTemporario + "' será substituído por '" + userStringSubsJogo + "'");
+                System.out.println("'" + Jogos.get(i) + "' será substituído por '" + userStringSubsJogo + "'");
 
-                // Como achar o indice correto correspondente no array?
-
+                Jogos.set(i, userStringSubsJogo);
                 break;
-                // Encerra ao achar a palavra identica
+                // Encerra ao achar a palavra identica e substituir.
             } else {
                 System.out.println("Este jogo não existe, verifique a digitação.");
             }
-
         }
     }
 
