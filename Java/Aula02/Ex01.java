@@ -18,7 +18,7 @@ public class Ex01 {
         while (Trava) {
             System.out.println("\n\nSelecione uma alternativa de 1 a 5.");
             System.out.print(
-                    "1 - Cadastrar Jogo\n2 - Listar Jogos\n3 - Atualizar Jogo\n4 - Remover Jogo\n5 - Sair\n\nOpção: ");
+                    "1 - Cadastrar Jogo\n2 - Listar Jogos\n3 - Atualizar Jogo (Indice)\n4 - Atualizar (Nome)\n5 - Remover Jogo (Indice)\n6 - Remover Jogo (Nome)\n7 - Sair\n\nOpção: ");
             int userIntSwitch = leia.nextInt();
             leia.nextLine(); // Limpar buffer
             System.out.println("\n");
@@ -33,14 +33,23 @@ public class Ex01 {
                     break;
 
                 case 3:
-                    Atualizar();
+                    AtualizarPorIndice();
                     break;
 
                 case 4:
-                    Remover();
+                    AtualizarPorNome();
                     break;
 
                 case 5:
+                    RemoverPorIndice();
+
+                    break;
+
+                case 6:
+                    RemoverPorNome();
+                    break;
+
+                case 7:
                     Sair();
                     leia.close();
                     break;
@@ -56,7 +65,6 @@ public class Ex01 {
     public static void Cadastro() {
         System.out.print("Quantos jogos deseja cadastrar: ");
         int qtdJogosCad = leia.nextInt();
-        leia.nextLine(); // Limpar buffer
         String userString = leia.nextLine();
 
         for (int i = 0; i < qtdJogosCad; i++) {
@@ -92,7 +100,7 @@ public class Ex01 {
         }
     }
 
-    public static void Atualizar() {
+    public static void AtualizarPorIndice() {
         System.out.println("> Revisando Lista de Jogos... <");
 
         Listar();
@@ -112,7 +120,44 @@ public class Ex01 {
 
     }
 
-    public static void Remover() {
+    public static void AtualizarPorNome() {
+
+        System.out.println("> Revisando Lista de Jogos... <");
+
+        Listar();
+
+        System.out.print("> Qual jogo da lista Deseja atualizar? Insira por escrito: ");
+        String userStringAtualizar = leia.nextLine();
+
+        for (String jogoDaListaTemporario : Jogos) { // Um for mais limpo
+            if (jogoDaListaTemporario.equalsIgnoreCase(userStringAtualizar)) {
+                System.out.println("'" + userStringAtualizar + "' está na lista!");
+                System.out.println("Por qual jogo deseja substituir? Insira por escrito: ");
+                String userStringSubsJogo = leia.nextLine();
+                System.out.println("'" + jogoDaListaTemporario + "' será substituído por '" + userStringSubsJogo + "'");
+
+                // Como achar o indice correto correspondente no array?
+
+                break;
+                // Encerra ao achar a palavra identica
+            } else {
+                System.out.println("Este jogo não existe, verifique a digitação.");
+            }
+
+        }
+    }
+
+    /*
+     * Na hora de atualizar a pessoa insere o número do indice e isso decrementado
+     * leva a posição correta do array para modificar OU remover.
+     * 
+     * 
+     * Mas agora preciso que o mesmo sistema solicite resposta, receba a String (Tem
+     * como ignrando maiuscula e minuscula?), procure pelo array uma string identica
+     * e retorne com a possibilidade de troca ou remoção....
+     */
+
+    public static void RemoverPorIndice() {
         System.out.println("> Revisando Lista de Jogos... <");
 
         Listar();
@@ -125,6 +170,10 @@ public class Ex01 {
 
         System.out.println("\n> Nova Lista de Jogos... <");
         Listar();
+    }
+
+    public static void RemoverPorNome() {
+
     }
 
     public static void Sair() {
