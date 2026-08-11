@@ -61,17 +61,23 @@ public class Ex01 {
             System.out.print("Insira o nome do jogo que deseja cadastrar: " + (i + 1) + "º - ");
             userString = leia.nextLine();
 
-            while (Trava) {
-                if (i == 0) {
-                    Jogos.add(userString);
-                    // Solução para a verificação não ser barrada por um array vazio
-                } else if (Jogos.get(i).equalsIgnoreCase(userString)) {
-                    System.out.println("O jogo '" + userString + "' já está inserido, tente novamente.");
-                } else {
-                    Jogos.add(userString);
-                    System.out.println("'" + userString + "' Inserido na lista!");
-                    Trava = false;
+            boolean jogoExiste = false;
+
+            for (String jogoDaListaTemporario : Jogos) { // Um for mais limpo
+                if (jogoDaListaTemporario.equalsIgnoreCase(userString)) {
+                    jogoExiste = true;
+                    break;
+                    // Encerra ao achar o primeiro jogo repetido
                 }
+
+            }
+
+            if (jogoExiste) {
+                System.out.println("O jogo '" + userString + "' já está inserido, tente novamente.");
+                i--;
+            } else {
+                Jogos.add(userString);
+                System.out.println("'" + userString + "' Inserido na lista!");
             }
         }
     }
