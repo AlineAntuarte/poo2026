@@ -129,6 +129,8 @@ public class Ex01 {
         System.out.print("> Qual jogo da lista Deseja atualizar? Insira por escrito: ");
         String userStringAtualizar = leia.nextLine();
 
+        boolean jogoEncontrado = false;
+
         for (int i = 0; i < Jogos.size(); i++) {
 
             if (Jogos.get(i).equalsIgnoreCase(userStringAtualizar)) {// Se o item do array for igual a palavra
@@ -138,11 +140,15 @@ public class Ex01 {
                 System.out.println("'" + Jogos.get(i) + "' será substituído por '" + userStringSubsJogo + "'");
 
                 Jogos.set(i, userStringSubsJogo);
+                jogoEncontrado = true;
+
                 break;
                 // Encerra ao achar a palavra identica e substituir.
-            } else {
-                System.out.println("Este jogo não existe, verifique a digitação.");
             }
+        }
+
+        if (!jogoEncontrado) { // Se depois de procurar em tudo não achar, sinaliza
+            System.out.println("Este jogo não existe, verifique a digitação.");
         }
     }
 
