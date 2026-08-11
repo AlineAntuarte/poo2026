@@ -20,6 +20,7 @@ public class Ex01 {
             System.out.print(
                     "1 - Cadastrar Jogo\n2 - Listar Jogos\n3 - Atualizar Jogo\n4 - Remover Jogo\n5 - Sair\n\nOpção: ");
             int userIntSwitch = leia.nextInt();
+            leia.nextLine(); // Limpar buffer
             System.out.println("\n");
 
             switch (userIntSwitch) {
@@ -55,6 +56,7 @@ public class Ex01 {
     public static void Cadastro() {
         System.out.print("Quantos jogos deseja cadastrar: ");
         int qtdJogosCad = leia.nextInt();
+        leia.nextLine(); // Limpar buffer
         String userString = leia.nextLine();
 
         for (int i = 0; i < qtdJogosCad; i++) {
@@ -93,32 +95,27 @@ public class Ex01 {
     public static void Atualizar() {
         System.out.println("> Revisando Lista de Jogos... <");
 
-        for (int i = 0; i < Jogos.size(); i++) {
-            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
-        }
+        Listar();
 
         System.out.print("> Qual jogo da lista Deseja atualizar: ");
         int userIntAtualizar = leia.nextInt();
+        leia.nextLine(); // Limpar buffer
         userIntAtualizar--;
 
         System.out.print("> Novo Jogo: ");
         String userStringAtualizar = leia.nextLine();
-        userStringAtualizar = leia.nextLine();
         Jogos.set(userIntAtualizar, userStringAtualizar);
 
         System.out.println("\n> Nova Lista de Jogos... <");
-        for (int i = 0; i < Jogos.size(); i++) {
-            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
-        }
+
+        Listar();
 
     }
 
     public static void Remover() {
         System.out.println("> Revisando Lista de Jogos... <");
 
-        for (int i = 0; i < Jogos.size(); i++) {
-            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
-        }
+        Listar();
 
         System.out.print("> Qual Jogo da Lista Deseja Remover: ");
         int userIntRemover = leia.nextInt();
@@ -127,9 +124,7 @@ public class Ex01 {
         Jogos.remove(userIntRemover);
 
         System.out.println("\n> Nova Lista de Jogos... <");
-        for (int i = 0; i < Jogos.size(); i++) {
-            System.out.print((i + 1) + "º - " + Jogos.get(i) + "\n");
-        }
+        Listar();
     }
 
     public static void Sair() {
