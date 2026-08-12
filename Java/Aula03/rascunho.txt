@@ -1,0 +1,14 @@
+System.out.println("""
+                  +---+
+                  |   |
+                  O   |
+                 /|\\  |
+                 / \\  |
+                      |
+                =========     _ _ _ _ _ _ _ _
+                """);
+
+        while (Trava) {
+            // Lógica do jogo
+            break; // Apenas para evitar o loop infinito por enquanto
+        }
