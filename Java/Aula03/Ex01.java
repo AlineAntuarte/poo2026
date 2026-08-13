@@ -13,6 +13,8 @@ public class Ex01 {
     static List<String> palavraOculta = new ArrayList<>();
     // Cadeia de letras feita pela palavra da vez
     static char[] letras = listaDePalavras[0].toCharArray();
+    // Variável para mostrar a palara completa no final
+    static String palavraReveladaString = listaDePalavras[0];
     // Chances de errar
     static int tentativas = 5;
     // Trava do loop que mantem o jogo rodando
@@ -71,6 +73,9 @@ public class Ex01 {
                 // Eu garanto que em locais com letra especificamente
                 // maiúscula ou minúscula ela se mantenha fiel ao original.
                 acertou = true;
+            } else if (userStringLetra.isEmpty()) {
+                System.out.println("Inserção vazia, digite uma letra!");
+                continue; //
             }
         }
     }
@@ -89,12 +94,13 @@ public class Ex01 {
     public static void verificarFimDeJogo() {
         if (!palavraOculta.contains("_")) {
             Trava = false;
-            printPalavra();
             // Nenhuma letra oculta, jogo ENCERRA.
+            System.out.println("PARABÉNS! Você venceu, a palavra era: " + palavraReveladaString);
+            System.out.println("\n");
         } else if (tentativas == 0) {
             // Chances acabam, jogo encerra.
             desenharForcaFinal();
-            System.out.println("Suas chances chegaram a 0.\nEncerrando...");
+            System.out.print("Suas chances chegaram a 0.\nEncerrando...");
             Trava = false;
         }
     }
