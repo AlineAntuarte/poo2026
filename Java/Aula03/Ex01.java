@@ -66,7 +66,10 @@ public class Ex01 {
     public static void atualizarPalavraOculta() {
         for (int i = 0; i < listaDePalavras[0].length(); i++) {
             if (userStringLetra.equalsIgnoreCase(String.valueOf(letras[i]))) {
-                palavraOculta.set(i, userStringLetra);
+                palavraOculta.set(i, String.valueOf(letras[i]));
+                // Substituindo 'userStringLetra' por 'String.valueOf(letras[i])'
+                // Eu garanto que em locais com letra especificamente
+                // maiúscula ou minúscula ela se mantenha fiel ao original.
                 acertou = true;
             }
         }
