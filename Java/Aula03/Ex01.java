@@ -7,6 +7,11 @@ import java.util.Scanner;
 // Jogo da Forca
 public class Ex01 {
 
+    // Aqui teremos a vasta lista de palavras para advinhar
+    static String[] listaDePalavras = { "Pitaya" };
+    // Este array no momento será testado com apenas uma palavra
+    static List<String> palavraOculta = new ArrayList<>();
+
     public static void main(String[] args) {
         System.out.println("== Jogo da Forca ==");
         Scanner leia = new Scanner(System.in);
@@ -14,11 +19,6 @@ public class Ex01 {
         int tentativas = 5;
 
         boolean Trava = true;
-
-        // Aqui teremos a vasta lista de palavras para advinhar
-        String[] listaDePalavras = { "Antuarte" };
-        // Este array no momento será testado com apenas uma palavra
-        List<String> palavraOculta = new ArrayList<>();
 
         // Cadeia de letras da palavra da vez
         char[] letras = listaDePalavras[0].toCharArray();
@@ -28,13 +28,11 @@ public class Ex01 {
             // terminal com Underline
             palavraOculta.add("_");
         }
-        boolean acertou = false;
 
         while (Trava) {
+            boolean acertou = false;
 
-            for (int i = 0; i < listaDePalavras[0].length(); i++) {
-                System.out.print(palavraOculta.get(i));
-            }
+            printPalavra();
 
             System.out.print("\n\nInsira uma Letra: ");
             String userStringLetra = leia.nextLine();
@@ -48,24 +46,34 @@ public class Ex01 {
             }
 
             if (acertou) {
-                System.out.println("Acertou alguma coisa");
+                // System.out.println("Acertou alguma coisa");
                 acertou = false;
             } else {
                 tentativas--;
-                System.out.println("Não achou letra alguma");
+                System.out.println("Você errou.\nTentativas Restantes: " + tentativas);
+                // System.out.println("Não achou letra alguma");
             }
 
             System.out.println("\n");
             if (!palavraOculta.contains("_")) {
                 Trava = false;
+                printPalavra();
                 // Nenhuma letra oculta, jogo ENCERRA.
             } else if (tentativas == 0) {
                 // Chances acabam, jogo encerra.
+                System.out.println("Suas chances chegaram a 0.\nEncerrando...");
+                Trava = false;
             }
             System.out.println("\n");
 
         }
 
         leia.close();
+    }
+
+    public static void printPalavra() {
+        for (int i = 0; i < listaDePalavras[0].length(); i++) {
+            System.out.print(palavraOculta.get(i));
+        }
     }
 }
