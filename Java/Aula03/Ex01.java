@@ -8,72 +8,175 @@ import java.util.Scanner;
 public class Ex01 {
 
     // Aqui teremos a vasta lista de palavras para advinhar
-    static String[] listaDePalavras = { "Pitaya" };
-    // Este array no momento será testado com apenas uma palavra
+    static String[] listaDePalavras = { "Bola" };
+    // Palavra da lista, porém oculta, recebe uma palavra por vez em forma Ide _
     static List<String> palavraOculta = new ArrayList<>();
+    // Cadeia de letras feita pela palavra da vez
+    static char[] letras = listaDePalavras[0].toCharArray();
+    // Chances de errar
+    static int tentativas = 5;
+    // Trava do loop que mantem o jogo rodando
+    static boolean Trava = true;
+    // Trava para determinar um acerto no chute de letra
+    static boolean acertou = false;
+    // Leitor de letras do usuário
+    static String userStringLetra = "";
 
     public static void main(String[] args) {
-        System.out.println("== Jogo da Forca ==");
+        System.out.println("== Jogo da Forca ==\n");
         Scanner leia = new Scanner(System.in);
 
-        int tentativas = 5;
-
-        boolean Trava = true;
-
-        // Cadeia de letras da palavra da vez
-        char[] letras = listaDePalavras[0].toCharArray();
-
-        for (int i = 0; i < listaDePalavras[0].length(); i++) {
-            // Sabendo a quantidade de letras, sem posição, posso fazer a Palavra oculta no
-            // terminal com Underline
-            palavraOculta.add("_");
-        }
+        formacaoPalavraOculta();
+        // Sabendo a quantidade de letras, sem posição, posso fazer a Palavra oculta no
+        // terminal com Underline
 
         while (Trava) {
-            boolean acertou = false;
-
+            acertou = false;
+            desenharForcaInicial();
+            desenharForca();
             printPalavra();
 
             System.out.print("\n\nInsira uma Letra: ");
-            String userStringLetra = leia.nextLine();
+            userStringLetra = leia.nextLine();
 
             // Varrer a palavra original e substituir no indice indicado
-            for (int i = 0; i < listaDePalavras[0].length(); i++) {
-                if (userStringLetra.equalsIgnoreCase(String.valueOf(letras[i]))) {
-                    palavraOculta.set(i, userStringLetra);
-                    acertou = true;
-                }
-            }
+            atualizarPalavraOculta();
 
-            if (acertou) {
-                // System.out.println("Acertou alguma coisa");
-                acertou = false;
-            } else {
-                tentativas--;
-                System.out.println("Você errou.\nTentativas Restantes: " + tentativas);
-                // System.out.println("Não achou letra alguma");
-            }
-
-            System.out.println("\n");
-            if (!palavraOculta.contains("_")) {
-                Trava = false;
-                printPalavra();
-                // Nenhuma letra oculta, jogo ENCERRA.
-            } else if (tentativas == 0) {
-                // Chances acabam, jogo encerra.
-                System.out.println("Suas chances chegaram a 0.\nEncerrando...");
-                Trava = false;
-            }
-            System.out.println("\n");
-
+            // Consequências de errar ou acertar
+            errouOuAcertou();
+            System.out.println("--------------------------------------------");
+            verificarFimDeJogo();
         }
 
         leia.close();
     }
 
+    public static void formacaoPalavraOculta() {
+        for (int i = 0; i < listaDePalavras[0].length(); i++) {
+            palavraOculta.add("_");
+        }
+    }
+
     public static void printPalavra() {
         for (int i = 0; i < listaDePalavras[0].length(); i++) {
             System.out.print(palavraOculta.get(i));
+        }
+    }
+
+    public static void atualizarPalavraOculta() {
+        for (int i = 0; i < listaDePalavras[0].length(); i++) {
+            if (userStringLetra.equalsIgnoreCase(String.valueOf(letras[i]))) {
+                palavraOculta.set(i, userStringLetra);
+                acertou = true;
+            }
+        }
+    }
+
+    public static void errouOuAcertou() {
+        if (acertou) {
+            // System.out.println("Acertou alguma coisa");
+            acertou = false;
+        } else {
+            tentativas--;
+            System.out.println("Você errou.\nTentativas Restantes: " + tentativas);
+            // System.out.println("Não achou letra alguma");
+        }
+    }
+
+    public static void verificarFimDeJogo() {
+        if (!palavraOculta.contains("_")) {
+            Trava = false;
+            printPalavra();
+            // Nenhuma letra oculta, jogo ENCERRA.
+        } else if (tentativas == 0) {
+            // Chances acabam, jogo encerra.
+            desenharForcaFinal();
+            System.out.println("Suas chances chegaram a 0.\nEncerrando...");
+            Trava = false;
+        }
+    }
+
+    public static void desenharForca() {
+        if (tentativas == 4) {
+            // Forca com Corda 4
+            System.out.println("""
+                      +---+
+                      |   |
+                          |
+                          |
+                          |
+                          |
+                    =========
+                    """);
+            System.out.println("Forca com Corda");
+        } else if (tentativas == 3) {
+            // Forca com Cabeça 3
+            System.out.println("""
+                      +---+
+                      |   |
+                      O   |
+                          |
+                          |
+                          |
+                    =========
+                    """);
+            System.out.println("Forca com Cabeça");
+        } else if (tentativas == 2) {
+            // Forca com corpo 2
+            System.out.println("""
+                      +---+
+                      |   |
+                      O   |
+                     /|\\  |
+                          |
+                          |
+                    =========
+                    """);
+            System.out.println("Forca com corpo");
+        } else if (tentativas == 1) {
+            // Forca com pés 1
+            System.out.println("""
+                      +---+
+                      |   |
+                      O   |
+                     /|\\  |
+                     / \\  |
+                          |
+                    =========
+                    """);
+            System.out.println("Forca com pés");
+        }
+    }
+
+    public static void desenharForcaInicial() {
+        if (tentativas == 5) {
+            // Forca Limpa 5
+            System.out.println("""
+                      +---+
+                          |
+                          |
+                          |
+                          |
+                          |
+                    =========
+                    """);
+            System.out.println("Forca Limpa");
+        }
+    }
+
+    public static void desenharForcaFinal() {
+        if (tentativas == 0) {
+            // Enforcado 0
+            System.out.println("""
+                      +---+
+                      |   |
+                      X   |
+                     /|\\  |
+                     / \\  |
+                          |
+                    =========
+                    """);
+            System.out.println("Enforcado (×_×)");
         }
     }
 }

@@ -1,3 +1,48 @@
+// Forca Limpa 5
+System.out.println("""
+                  +---+
+                      |
+                      |
+                      |
+                      |
+                      |
+                =========
+                """);
+
+// Forca com Corda 4
+System.out.println("""
+                  +---+
+                  |   |
+                      |
+                      |
+                      |
+                      |
+                =========
+                """);
+
+// Forca com Cabeça 3
+System.out.println("""
+                  +---+
+                  |   |
+                  O   |
+                      |
+                      |
+                      |
+                =========
+                """);
+
+// Forca com corpo 2
+System.out.println("""
+                  +---+
+                  |   |
+                  O   |
+                 /|\\  |
+                      |
+                      |
+                =========
+                """);
+
+// Forca com pés 1
 System.out.println("""
                   +---+
                   |   |
@@ -5,10 +50,16 @@ System.out.println("""
                  /|\\  |
                  / \\  |
                       |
-                =========     _ _ _ _ _ _ _ _
+                =========
                 """);
 
-        while (Trava) {
-            // Lógica do jogo
-            break; // Apenas para evitar o loop infinito por enquanto
-        }
+// Enforcado 0
+System.out.println("""
+                  +---+
+                  |   |
+                  X   |
+                 /|\\  |
+                 / \\  |
+                      |
+                =========
+                """);
