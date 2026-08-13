@@ -66,6 +66,11 @@ public class Ex01 {
     }
 
     public static void atualizarPalavraOculta() {
+        if (userStringLetra.isEmpty()) {
+            System.out.println("Inserção vazia, digite uma letra!");
+            acertou = true;
+            return;
+        }
         for (int i = 0; i < listaDePalavras[0].length(); i++) {
             if (userStringLetra.equalsIgnoreCase(String.valueOf(letras[i]))) {
                 palavraOculta.set(i, String.valueOf(letras[i]));
@@ -73,11 +78,9 @@ public class Ex01 {
                 // Eu garanto que em locais com letra especificamente
                 // maiúscula ou minúscula ela se mantenha fiel ao original.
                 acertou = true;
-            } else if (userStringLetra.isEmpty()) {
-                System.out.println("Inserção vazia, digite uma letra!");
-                continue; //
             }
         }
+
     }
 
     public static void errouOuAcertou() {
