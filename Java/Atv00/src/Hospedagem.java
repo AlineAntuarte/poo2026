@@ -33,7 +33,7 @@ public class Hospedagem {
 
     // Preencher Objetos
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner leia = new Scanner(System.in);
         // Criando ArrayList
         ArrayList<Hospedagem> listaDeHospedagens = new ArrayList<>();
