@@ -1,28 +1,17 @@
-RespostaT otal
-
-
-Aline
-Aline@gmail.com
-1
-1
-true
-Ana
-Ana@gmail.com
-2
-3
-false
-Rebeca
-Rebeca@gmail.com
-3
-5
-true
-Gabriel
-Gabriel@gmail.com
-4
-7
-true
-Helena
-Helena@gmail.com
-5
-11
-false
+/*
+             * System.out.print("Nome: ");
+             * String nome = leia.nextLine();
+             * 
+             * System.out.print("Email: ");
+             * String email = leia.nextLine();
+             * 
+             * System.out.print("Número do Quarto: ");
+             * int numQuarto = leia.nextInt();
+             * 
+             * System.out.print("Dias Hospedado: ");
+             * int diasDeHospedagem = leia.nextInt();
+             * 
+             * System.out.print("Café da manhã incluso: ");
+             * boolean cafeDaManha = leia.nextBoolean();
+             * leia.nextLine();
+             */

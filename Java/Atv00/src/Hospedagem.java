@@ -10,6 +10,7 @@ public class Hospedagem {
     int numQuarto;
     int diasDeHospedagem;
     boolean cafeDaManha;
+    double valorDiaria;
 
     // Construtor
     public Hospedagem(String nome, String email, int numQuarto, int diasDeHospedagem, boolean cafeDaManha) {
@@ -31,6 +32,15 @@ public class Hospedagem {
         }
     }
 
+    public double valorDiaria() {
+        valorDiaria = this.diasDeHospedagem * 10;
+        if (this.cafeDaManha) {
+            valorDiaria += (this.diasDeHospedagem * 50);
+        }
+        System.out.print("\nValor da Diária: R$" + valorDiaria);
+        return valorDiaria;
+    }
+
     // Preencher Objetos
 
     public static void main(String[] args) {
@@ -40,59 +50,52 @@ public class Hospedagem {
 
         // Preencher o Array com Loop
 
-        /*
-         * String[] nome = { "Aline", "Ana", "Rebeca", "Gabriel", "Helena", "Sofia",
-         * "Lucas", "Matheus", "Eduardo",
-         * "José" };
-         * String[] email = { "Aline@gmail.com", "Ana@gmail.com", "Rebeca@gmail.com",
-         * "Gabriel@gmail.com",
-         * "Helena@gmail.com", "Sofia@gmail.com", "Lucas@gmail.com",
-         * "Matheus@gmail.com", "Eduardo@gmail.com",
-         * "José@gmail.com" };
-         * int[] numQuarto = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-         * int[] diasDeHospedagem = { 1, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
-         * boolean[] cafeDaManha = { true, false, true, true, false, false, true, false,
-         * true, false };
-         */
+        System.out.print("Quantos estudantes iram se hospedar: ");
+        int numEstudantes = leia.nextInt();
+        leia.nextLine();
 
-        for (int i = 0; i < 5; i++) {
+        String[] nomeProntos = { "Aline", "Ana", "Rebeca", "Gabriel", "Helena", "Sofia",
+                "Lucas", "Matheus", "Eduardo",
+                "José" };
+        String[] emailProntos = { "Aline@gmail.com", "Ana@gmail.com", "Rebeca@gmail.com",
+                "Gabriel@gmail.com",
+                "Helena@gmail.com", "Sofia@gmail.com", "Lucas@gmail.com",
+                "Matheus@gmail.com", "Eduardo@gmail.com",
+                "José@gmail.com" };
+        int[] numQuartoProntos = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int[] diasDeHospedagemProntos = { 1, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+        boolean[] cafeDaManhaProntos = { true, false, true, true, false, false, true, false,
+                true, false };
+
+        for (int i = 0; i < numEstudantes; i++) {
             // Preenchendo o as variáveis com informações
-
-            System.out.println("----------------------------------");
-            System.out.print("Nome: ");
-            String nome = leia.nextLine();
-
-            System.out.print("Email: ");
-            String email = leia.nextLine();
-
-            System.out.print("Número do Quarto: ");
-            int numQuarto = leia.nextInt();
-
-            System.out.print("Dias Hospedado: ");
-            int diasDeHospedagem = leia.nextInt();
-
-            System.out.print("Café da manhã incluso: ");
-            boolean cafeDaManha = leia.nextBoolean();
-            leia.nextLine();
+            String nome = nomeProntos[i];
+            String email = emailProntos[i];
+            int numQuarto = numQuartoProntos[i];
+            int diasDeHospedagem = diasDeHospedagemProntos[i];
+            boolean cafeDaManha = cafeDaManhaProntos[i];
 
             listaDeHospedagens.add(new Hospedagem(nome, email, numQuarto, diasDeHospedagem, cafeDaManha));
 
             System.out.print("\n");
-
         }
 
         for (Hospedagem D : listaDeHospedagens) {
 
-            System.out.println("Nome: ");
-            System.out.println("Email: ");
-            System.out.println("Número de Quarto: ");
-            System.out.println("Dias de Hospedagem: ");
+            System.out.println("Nome: " + D.nome);
+            System.out.println("Email: " + D.email);
+            System.out.println("Número de Quarto: " + D.numQuarto);
+            System.out.println("Dias de Hospedagem: " + D.diasDeHospedagem);
 
             if (D.temCafeh()) {
-                System.out.println(D.nome + "' solicitou café da mnhã incluso.");
+                System.out.print("'" + D.nome + "' solicitou café da manhã incluso.");
             } else {
-                System.out.println(D.nome + "' não solicitou café da mnhã incluso.");
+                System.out.print("'" + D.nome + "' não solicitou café da manhã incluso.");
             }
+
+            System.out.print("\nValor Base da Diária: R$10,00");
+            D.valorDiaria();
+            System.out.println("\n----------------------------------------------");
         }
         leia.close();
     }
