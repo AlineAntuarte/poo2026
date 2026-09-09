@@ -96,8 +96,7 @@ public class Hospedagem {
 
             System.out.print("\nValor Base da Diária: R$100,00");
             System.out.print("\nValor Base do Café: R$30,00");
-            D.valorDiaria();
-            System.out.print("\nValor da Diária: R$" + D.valorDiaria);
+            System.out.printf("\nTotal a pagar: R$ %.2f\n", D.valorDiaria());
             System.out.println("\n----------------------------------------------");
         }
         leia.close();
