@@ -11,6 +11,8 @@ public class Hospedagem {
     int diasDeHospedagem;
     boolean cafeDaManha;
     double valorDiaria;
+    double baseDiaria = 100;
+    double baseCafeDaManha = 30;
 
     // Construtor
     public Hospedagem(String nome, String email, int numQuarto, int diasDeHospedagem, boolean cafeDaManha) {
@@ -33,11 +35,10 @@ public class Hospedagem {
     }
 
     public double valorDiaria() {
-        valorDiaria = this.diasDeHospedagem * 10;
+        valorDiaria = this.diasDeHospedagem * baseDiaria;
         if (this.cafeDaManha) {
-            valorDiaria += (this.diasDeHospedagem * 50);
+            valorDiaria += (this.diasDeHospedagem * baseCafeDaManha);
         }
-        System.out.print("\nValor da Diária: R$" + valorDiaria);
         return valorDiaria;
     }
 
@@ -93,8 +94,10 @@ public class Hospedagem {
                 System.out.print("'" + D.nome + "' não solicitou café da manhã incluso.");
             }
 
-            System.out.print("\nValor Base da Diária: R$10,00");
+            System.out.print("\nValor Base da Diária: R$100,00");
+            System.out.print("\nValor Base do Café: R$30,00");
             D.valorDiaria();
+            System.out.print("\nValor da Diária: R$" + D.valorDiaria);
             System.out.println("\n----------------------------------------------");
         }
         leia.close();
