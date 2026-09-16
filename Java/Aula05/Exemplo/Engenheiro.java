@@ -1,12 +1,12 @@
-package Java.Aula05;
+package Java.Aula05.Exemplo;
 
-public class Medico {
+public class Engenheiro {
     private String cpf;
     private String nome;
     private String crea;
     private float salarioBruto;
 
-    public Medico(String cpf, String nome, String crea, float salarioBruto) {
+    public Engenheiro(String cpf, String nome, String crea, float salarioBruto) {
         this.cpf = cpf;
         this.nome = nome;
         this.crea = crea;
@@ -17,7 +17,7 @@ public class Medico {
         return salarioBruto - (salarioBruto * desconto) + bonus;
     }
 
-    public void emitirexame() {
-        System.out.println("Emitindo exame...");
+    public void emitirLaudo() {
+        System.out.println("Emitindo laudo...");
     }
 }
